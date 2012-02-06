@@ -25,14 +25,14 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.curriki</groupId>
-    <artifactId>curriki-database</artifactId>
-    <version>2.1-SNAPSHOT</version>
+    <groupId>org.xwiki.clams</groupId>
+    <artifactId>xwiki-clams-core-database</artifactId>
+    <version>2.2-SNAPSHOT</version>
   </parent>
-  <artifactId>curriki-database-hsqldb</artifactId>
-  <name>Curriki - Database - HSQLDB</name>
+  <artifactId>xwiki-clams-core-database-hsqldb</artifactId>
+  <name>XWiki CLAMS - Core - Database - HSQLDB</name>
   <packaging>pom</packaging>
-  <description>Curriki - Database - HSQLDB</description>
+  <description>XWiki CLAMS - Core - Database - HSQLDB</description>
   <!-- Required for the exec:exec plugin execution below. Doesn't seem to work as an exec plugin
        dependency -->
   <dependencies>

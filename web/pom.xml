@@ -25,16 +25,16 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.curriki</groupId>
-    <artifactId>curriki-parent</artifactId>
-    <version>2.1-NEXT-SNAPSHOT</version>
+    <groupId>org.xwiki.clams</groupId>
+    <artifactId>xwiki-clams-core</artifactId>
+    <version>2.2-SNAPSHOT</version>
   </parent>
-  <artifactId>curriki-web</artifactId>
-  <name>XWiki Products - Curriki - Web</name>
+  <artifactId>xwiki-clams-core-web</artifactId>
+  <name>XWiki CLAMS - Core - Web</name>
   <packaging>war</packaging>
-  <description>The standard Curriki WAR</description>
+  <description>XWiki CLAMS - Core - Web</description> 
   <dependencies>
-    <!-- Depend on the platform WAR to get all web resources. We then need to add all libraries we need for Curriki. -->
+    <!-- Depend on the platform WAR to get all web resources. We then need to add all libraries we need for XWiki CLAMS. -->
     <dependency>
       <groupId>org.xwiki.platform</groupId>
       <artifactId>xwiki-platform-web</artifactId>
@@ -457,20 +457,29 @@ practice to put them here since they are real dependencies -->
       </exclusions>
     </dependency>
     <!-- Logging Dependencies. Ensures all logging goes through SLF4J and Logback. -->
+    <!-- Everybody logs -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.6.1</version>
+    </dependency>
+    <!-- SLF4J implementation we use -->
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
-      <scope>runtime</scope>
+      <version>0.9.29</version>
     </dependency>
+    <!-- External libraries using Commons Logging will delegate to SLF4J -->
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>jcl-over-slf4j</artifactId>
-      <scope>runtime</scope>
+      <version>1.6.1</version>
     </dependency>
+    <!-- External libraries using Log4J will delegate to SLF4J -->
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>log4j-over-slf4j</artifactId>
-      <scope>runtime</scope>
+      <version>1.6.1</version>
     </dependency>
     <!-- Needed for JSR 303 (Bean Validation) clients such as xwiki-core properties.
          It is just one JSR 303 implementation among others so it's a distribution decision to choose this one.
@@ -481,7 +490,7 @@ practice to put them here since they are real dependencies -->
       <version>4.1.0.Final</version>
       <scope>runtime</scope>
     </dependency>
-    <!-- Curriki dependencies
+    <!-- Curriki plugins dependencies
     -->
     <dependency>
 	    <groupId>com.xpn.xwiki.platform.plugins</groupId>
@@ -491,27 +500,27 @@ practice to put them here since they are real dependencies -->
     <dependency>
       <groupId>org.curriki</groupId>
       <artifactId>curriki-plugin-lucene</artifactId>
-      <version>${pom.version}</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
 	    <groupId>org.curriki</groupId>
 	    <artifactId>curriki-plugin-spacemanager</artifactId>
-	    <version>${pom.version}</version>
+	    <version>${project.version}</version>
     </dependency>
     <dependency>
   	  <groupId>org.curriki</groupId>
 	    <artifactId>curriki-plugin-activitystream</artifactId>
-	    <version>${pom.version}</version>
+	    <version>${project.version}</version>
     </dependency>    
     <dependency>
 	    <groupId>org.curriki</groupId>
 	    <artifactId>curriki-plugin-curriki</artifactId>
-	    <version>${pom.version}</version>
+	    <version>${project.version}</version>
     </dependency>
     <dependency>
 	    <groupId>org.curriki</groupId>
 	    <artifactId>curriki-plugin-servlet</artifactId>
-	    <version>${pom.version}</version>
+	    <version>${project.version}</version>
     </dependency>
   </dependencies>
   <build>
@@ -674,10 +683,12 @@ xwiki.invitationmanager.resourcespace=Groups
         <configuration>
           <webResources>
             <!-- Include License resources -->
+            <!--
             <resource>
               <directory>${project.build.directory}/maven-shared-archive-resources/META-INF</directory>
               <targetPath>META-INF</targetPath>
             </resource>
+            -->
             <!-- Include Configuration files that were generated -->
             <resource>
               <directory>${project.build.directory}/maven-shared-archive-resources</directory>

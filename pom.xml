@@ -25,62 +25,34 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>org.xwiki.platform</groupId>
-    <artifactId>xwiki</artifactId>
-    <version>31</version>
-  </parent>
-  <groupId>org.curriki</groupId>
-  <artifactId>curriki-parent</artifactId>
+  <groupId>org.xwiki.clams</groupId>
+  <artifactId>xwiki-clams-core</artifactId>
+  <version>2.2-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>XWiki Products - Curriki - Parent POM</name>
-  <version>2.1-NEXT-SNAPSHOT</version>
-  <description>XWiki Products - Curriki - Parent POM</description>
+  <name>XWiki CLAMS - Core - Parent POM</name>  
+  <description>XWiki CLAMS - Core - Parent POM</description>
   <scm>
     <connection>scm:git:git://github.com/xwiki-contrib/xwiki-clams-core.git</connection>
     <developerConnection>scm:git:git@github.com:xwiki-contrib/xwiki-clams-core.git</developerConnection>
     <url>https://github.com/xwiki-contrib/xwiki-clams-core/tree/master/</url>
   </scm>
-  <properties>
-    <!-- Versions of XWiki dependencies used in Curriki modules -->
-    <platform.version>3.1</platform.version>
-    <commons.version>3.1</commons.version>
-    <rendering.version>3.1</rendering.version>
-    <smartgwt.version>2.4</smartgwt.version>
+  <properties>    
+    <commons.version>3.1.1</commons.version>
+    <!-- Useful for XWiki CLAMS extensions -->
+    <enterprise.version>3.1.1</enterprise.version>
+    <!-- Versions of XWiki dependencies used in XWiki CLAMS modules -->
+    <rendering.version>3.1.1</rendering.version>
+    <platform.version>3.1.1</platform.version>
+    
     <platform.plugins.invitationmanager.version>1.0.1</platform.plugins.invitationmanager.version>
     <platform.plugins.spacemanager.version>1.1.1</platform.plugins.spacemanager.version>
+
+    <smartgwt.version>2.4</smartgwt.version>
+
     <!-- Don't run CLIRR on XE modules since there's no Java code and for some reason CLIRR executes which makes
          the build take longer than needed (since it downloads the previous versions). -->
     <xwiki.clirr.skip>true</xwiki.clirr.skip>
-  </properties>
-  <dependencyManagement>
-    <dependencies>
-      <!-- Everybody logs -->
-      <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-api</artifactId>
-        <version>1.6.1</version>
-      </dependency>
-      <!-- SLF4J implementation we use -->
-      <dependency>
-        <groupId>ch.qos.logback</groupId>
-        <artifactId>logback-classic</artifactId>
-        <version>0.9.29</version>
-      </dependency>
-      <!-- External libraries using Commons Logging will delegate to SLF4J -->
-      <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>jcl-over-slf4j</artifactId>
-        <version>1.6.1</version>
-      </dependency>
-      <!-- External libraries using Log4J will delegate to SLF4J -->
-      <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>log4j-over-slf4j</artifactId>
-        <version>1.6.1</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+  </properties>  
   <build>
     <pluginManagement>
       <plugins>
@@ -230,11 +202,6 @@ xwiki.invitationmanager.resourcespace=Groups
         <xwiki.db.hbm.xwiki>xwiki.hbm.xml</xwiki.db.hbm.xwiki>
         <xwiki.db.hbm.feeds>feeds.hbm.xml</xwiki.db.hbm.feeds>
       </properties>
-      <modules>
-        <module>plugins</module>
-        <module>web</module>
-        <module>wiki</module>
-      </modules>
     </profile>
   </profiles>
 </project>
